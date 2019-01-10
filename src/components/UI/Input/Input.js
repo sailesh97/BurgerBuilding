@@ -47,6 +47,8 @@ const input = props => {
         />
       );
   }
+  let a = {...props.elementConfig}
+  console.log(a);
   return (
     <div className={classes.Input}>
       <label className={classes.Label}>{props.label}</label>
