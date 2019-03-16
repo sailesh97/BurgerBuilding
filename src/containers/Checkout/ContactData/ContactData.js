@@ -101,6 +101,7 @@ class ContactData extends Component {
         formElementIdentifier
       ].value;
     }
+    {console.log('adfjk')}
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
