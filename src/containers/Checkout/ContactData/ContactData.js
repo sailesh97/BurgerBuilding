@@ -43,7 +43,7 @@ class ContactData extends Component {
         validation: {
           required: true,
           minLength: 5,
-          maxLength: 5
+          maxLength: 6
         },
         valid: false,
         touched: false
@@ -85,14 +85,14 @@ class ContactData extends Component {
         value: "fastest",
         valid: true,
         touched: false,
-        validation: {},
+        validation: {}
       }
     },
-    formIsValid: false,
+    formIsValid: false, 
     loading: false
   };
 
-  orderHandler = event => {
+  orderHandler = (event) => {
     event.preventDefault();
     this.setState({ loading: true });
     const formData = {};
@@ -119,13 +119,13 @@ class ContactData extends Component {
 
   checkValidity(value, rules) {
     let isValid = true;
-    if(!rules){
+    if (!rules) {
       return true;
     }
 
     if (rules.required) {
       isValid = value.trim() !== "" && isValid;
-    }
+    } 
 
     if (rules.minLength) {
       isValid = value.length >= rules.minLength && isValid;
@@ -152,9 +152,9 @@ class ContactData extends Component {
     );
     updatedFormElement.touched = true;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
-    
+
     let formIsValid = true;
-    for( let inputIdentifier in updatedOrderForm) {
+    for (let inputIdentifier in updatedOrderForm) {
       formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
     }
 
@@ -168,7 +168,7 @@ class ContactData extends Component {
         id: key,
         config: this.state.orderForm[key]
       });
-    }
+    } 
     let form = (
       <form onSubmit={this.orderHandler}>
         {formElementsArray.map(formElement => (
@@ -183,9 +183,12 @@ class ContactData extends Component {
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
-        <Button btnType="Success" disabled={!this.state.formIsValid} clicked={this.orderHandler}>
+        <Button
+          btnType="Success"
+          disabled={!this.state.formIsValid}
+        >
           ORDER
-        </Button>
+        </Button>  
       </form>
     );
     if (this.state.loading) {
