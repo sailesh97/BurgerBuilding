@@ -107,6 +107,7 @@ class ContactData extends Component {
       price: this.props.price,
       orderData: formData
     };
+    console.log('a');
     axios
       .post("/orders.json", order)
       .then(response => {
